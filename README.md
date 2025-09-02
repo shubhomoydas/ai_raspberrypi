@@ -2,7 +2,7 @@
 
 A little experiment with RaspberryPi and AI.
 
-#### Hardware / Software
+### Hardware / Software
 
 Hardware used:
   - RaspberryPi 5
@@ -25,7 +25,9 @@ export CLAUDE_API_KEY=<api_key> && export CLAUDE_API_URL=https://api.anthropic.c
   && export CLAUDE_API_VER=2023-06-01 && export OPENAI_API_KEY=<api_key>; python
 ```
 
-#### Python
+### Python
+
+#### Check if LEGO motor setup is OK
 
 Below code will test if the LEGO motor is working fine.
 
@@ -93,7 +95,15 @@ source ~/work/venv/python311_raspi/bin/activate
 jupyter notebook --no-browser --port 8896
 ```
 
-#### Install some python libraries
+#### Important links for help on audio
+  - https://www.geeksforgeeks.org/python/create-a-voice-recorder-using-python/
+  - https://platform.openai.com/docs/guides/text-to-speech
+  - https://github.com/openai/openai-python/blob/main/src/openai/helpers/local_audio_player.py
+  - https://raspberrypi.stackexchange.com/questions/7088/playing-audio-files-with-python
+  - http://stackoverflow.com/questions/43941716/ddg#43950755
+
+
+#### Install required python libraries
 **IMPORTANT**: These must be run on Raspberry Pi
 ```
 # sudo apt-get install libportaudio2
@@ -104,6 +114,46 @@ jupyter notebook --no-browser --port 8896
 
 # pip install jupyter
 ```
+
+#### Setup for installing portaudio on Macbook, i.e., OSX (required by pyaudio)
+**IMPORTANT**: these are optional and should be run on Macbook to setup local development
+```
+brew install portaudio
+brew install ffmpeg
+python3 -m pip install --upgrade pip setuptools
+python3 -m pip install pyaudio --global-option="build_ext" --global-option="-I/opt/homebrew/include" --global-option="-L/opt/homebrew/lib"
+pip install pydub
+```
+
+#### Setup for enabling audio output on Raspberry Pi
+**IMPORTANT**: these must be run ON THE Raspberry Pi
+```
+sudo apt-get install ffmpeg
+
+sudo apt-get install portaudio19-dev
+
+sudo apt-get install python3-dev
+
+pip install pyaudio
+
+pip install pydub pyaudio
+```
+
+#### Setting up the python virtual env
+**NOTE**: These should be run ON THE Raspberry PI
+```
+mkdir ~/work/venv
+
+/Library/Frameworks/Python.framework/Versions/3.11/bin/python3 -m venv ~/work/venv/python311_raspi
+
+python3 -m venv ~/work/venv/python311_raspi
+
+source ~/work/venv/python311_raspi/bin/activate
+
+source ~/work/venv/python311_raspi/bin/activate
+```
+
+### Raspberry Pi setup
 
 #### Connecting to Raspberry Pi with a GUI
 
@@ -138,48 +188,3 @@ ssh-agent bash -c 'ssh-add /Users/shubhomoydas/.ssh/id_rsa_bitbucket_personal; g
 ssh-agent bash -c 'ssh-add /Users/shubhomoydas/.ssh/id_rsa_bitbucket_personal; git push origin'
 ```
 
-### Important links for help on audio
-  - https://www.geeksforgeeks.org/python/create-a-voice-recorder-using-python/
-  - https://platform.openai.com/docs/guides/text-to-speech
-  - https://github.com/openai/openai-python/blob/main/src/openai/helpers/local_audio_player.py
-  - https://raspberrypi.stackexchange.com/questions/7088/playing-audio-files-with-python
-  - http://stackoverflow.com/questions/43941716/ddg#43950755
-
-
-### Setup for installing portaudio on Macbook, i.e., OSX (required by pyaudio)
-**IMPORTANT**: these are optional and should be run on Macbook to setup local development
-```
-brew install portaudio
-brew install ffmpeg
-python3 -m pip install --upgrade pip setuptools
-python3 -m pip install pyaudio --global-option="build_ext" --global-option="-I/opt/homebrew/include" --global-option="-L/opt/homebrew/lib"
-pip install pydub
-```
-
-### Setup for enabling audio output on Raspberry Pi
-**IMPORTANT**: these must be run ON THE Raspberry Pi
-```
-sudo apt-get install ffmpeg
-
-sudo apt-get install portaudio19-dev
-
-sudo apt-get install python3-dev
-
-pip install pyaudio
-
-pip install pydub pyaudio
-```
-
-### Setting up the python virtual env
-**NOTE**: These should be run ON THE Raspberry PI
-```
-mkdir ~/work/venv
-
-/Library/Frameworks/Python.framework/Versions/3.11/bin/python3 -m venv ~/work/venv/python311_raspi
-
-python3 -m venv ~/work/venv/python311_raspi
-
-source ~/work/venv/python311_raspi/bin/activate
-
-source ~/work/venv/python311_raspi/bin/activate
-```
