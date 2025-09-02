@@ -1,7 +1,10 @@
 # README #
 
+A little experiment with RaspberryPi and AI.
+
 #### Hardware / Software
-A little experiment with RaspberryPi and AI. Hardware used:
+
+Hardware used:
   - RaspberryPi 5
   - BuildHAT
   - Lego Motor
