@@ -5,6 +5,8 @@ A little experiment with RaspberryPi and AI. Hardware used:
   - RaspberryPi 5
   - BuildHAT
   - Lego Motor
+  - USB based speaker for Raspberry Pi
+  - USB based microphone for Raspberry Pi
 
 Software / AI:
   - TigerVNC (connect to Raspberry Pi)
@@ -21,6 +23,8 @@ export CLAUDE_API_KEY=<api_key> && export CLAUDE_API_URL=https://api.anthropic.c
 ```
 
 #### Python
+
+Below code will test if the LEGO motor is working fine.
 
 ```python
 
@@ -77,19 +81,17 @@ while i < 10:
 
 ```
 
-#### shutdown raspberry pi
+#### Start jupyter notebook
 ```
-sudo shutdown -h now
-```
+cd ~/work/git/raspi
 
-```
-cd /home/shubhomoydas/work/git/raspi
-
-source /home/shubhomoydas/work/venv/python311_raspi/bin/activate
+source ~/work/venv/python311_raspi/bin/activate
 
 jupyter notebook --no-browser --port 8896
 ```
 
+#### Install some python libraries
+**IMPORTANT**: These must be run on Raspberry Pi
 ```
 # sudo apt-get install libportaudio2
 
@@ -100,25 +102,31 @@ jupyter notebook --no-browser --port 8896
 # pip install jupyter
 ```
 
-#### GUI
+#### Connecting to Raspberry Pi with a GUI
 
-Use TigerVNCViewer to connect to Raspberry Pi UI.
+Use *TigerVNCViewer* to connect to Raspberry Pi UI.
 
 ```
 ssh shubhomoydas@192.168.1.82
 
 sudo raspi-config
 ```
+From the menu, use **Interface Options** to enable VNC
 
-*Use "Interface Options" to enable VNC*
 
+#### Shutdown raspberry pi
+```
+sudo shutdown -h now
+```
 
-### git
+### Git
 
-#### On office laptop, the below will fail because we have default ssh key configured for espressive bitbucket
-#### git clone git@bitbucket.org:shubhomoy_das/raspi.git
+The below might fail in case we have default ssh key configured for another bitbucket repository.
+```
+git clone git@bitbucket.org:shubhomoy_das/raspi.git
+```
 
-#### the below should work on office laptop as well.
+If the above fails, `ssh-agent bash -c ` commands below can be used.
 ```
 ssh-agent bash -c 'ssh-add /Users/shubhomoydas/.ssh/id_rsa_bitbucket_personal; git clone git@bitbucket.org:shubhomoy_das/raspi.git'
 
@@ -135,7 +143,7 @@ ssh-agent bash -c 'ssh-add /Users/shubhomoydas/.ssh/id_rsa_bitbucket_personal; g
   - http://stackoverflow.com/questions/43941716/ddg#43950755
 
 
-### setup for installing portaudio on OSX (required by pyaudio)
+### Setup for installing portaudio on Macbook, i.e., OSX (required by pyaudio)
 **IMPORTANT**: these are optional and should be run on Macbook to setup local development
 ```
 brew install portaudio
@@ -145,7 +153,7 @@ python3 -m pip install pyaudio --global-option="build_ext" --global-option="-I/o
 pip install pydub
 ```
 
-### setup for playing audio on Raspberry Pi
+### Setup for enabling audio output on Raspberry Pi
 **IMPORTANT**: these must be run ON THE Raspberry Pi
 ```
 sudo apt-get install ffmpeg
@@ -160,15 +168,15 @@ pip install pydub pyaudio
 ```
 
 ### Setting up the python virtual env
-**NOTE**: These should be run on the Raspberry PI
+**NOTE**: These should be run ON THE Raspberry PI
 ```
-mkdir /home/shubhomoydas/work/venv
+mkdir ~/work/venv
 
 /Library/Frameworks/Python.framework/Versions/3.11/bin/python3 -m venv ~/work/venv/python311_raspi
 
-python3 -m venv /home/shubhomoydas/work/venv/python311_raspi
+python3 -m venv ~/work/venv/python311_raspi
 
 source ~/work/venv/python311_raspi/bin/activate
 
-source /home/shubhomoydas/work/venv/python311_raspi/bin/activate
+source ~/work/venv/python311_raspi/bin/activate
 ```
