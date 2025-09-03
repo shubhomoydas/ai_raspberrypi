@@ -1,0 +1,15 @@
+.idea/*
+.rgignore
+.vscode
+.espdev
+.idea
+.python-version
+*.pyc
+pyenv
+pyenv3
+.pyenv
+.DS_Store
+*.pickle
+~$*.xlsx
+*.pem
+__pycache__
