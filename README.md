@@ -181,11 +181,11 @@ git clone git@bitbucket.org:shubhomoy_das/raspi.git
 
 If the above fails, `ssh-agent bash -c ` commands below can be used.
 ```
-ssh-agent bash -c 'ssh-add /Users/shubhomoydas/.ssh/id_rsa_github_personal; git clone git@github.com:shubhomoydas/ai_raspberrypi.git'
+ssh-agent bash -c 'ssh-add ~/.ssh/id_rsa_github_personal; git clone git@github.com:shubhomoydas/ai_raspberrypi.git'
 
-ssh-agent bash -c 'ssh-add /Users/shubhomoydas/.ssh/id_rsa_github_personal; git fetch'
+ssh-agent bash -c 'ssh-add ~/.ssh/id_rsa_github_personal; git fetch'
 
-ssh-agent bash -c 'ssh-add /Users/shubhomoydas/.ssh/id_rsa_github_personal; git pull origin'
+ssh-agent bash -c 'ssh-add ~/.ssh/id_rsa_github_personal; git pull origin'
 
-ssh-agent bash -c 'ssh-add /Users/shubhomoydas/.ssh/id_rsa_github_personal; git push origin'
+ssh-agent bash -c 'ssh-add ~/.ssh/id_rsa_github_personal; git push origin'
 ```
