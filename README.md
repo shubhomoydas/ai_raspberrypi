@@ -6,7 +6,10 @@ A little experiment with RaspberryPi and AI.
 We will control a LEGO motor using voice commands.
 
 ### Setup and Approach
-The Raspberry Pi [Build HAT](https://buildhat.readthedocs.io/en/latest/buildhat/index.html) helps us connect to the [LEGO Motor](https://buildhat.readthedocs.io/en/latest/buildhat/motor.html). The python APIs let us programmatically control the motor. These APIs are rather cryptic, such as `run_for_degrees()`, `run_for_rotations()`, `run_to_position()`, etc. Instead, instructions such as `Please turn left and then turn right twice.` are more human-friendly. We will use an LLM (Claude Sonnet) and ReAct (Reasoning and Acting) to translate the user's instructions into the low-level motor APIs.
+The Raspberry Pi [Build HAT](https://buildhat.readthedocs.io/en/latest/buildhat/index.html) helps us connect to the [LEGO Motor](https://buildhat.readthedocs.io/en/latest/buildhat/motor.html). The python APIs let us programmatically control the motor. These APIs are rather cryptic, such as `run_for_degrees()`, `run_for_rotations()`, `run_to_position()`, etc. Instead, instructions such as `Please turn left and then turn right twice.` are more human-friendly. For this, we will implement our system as follows:
+  1. We will use an LLM (Claude) and ReAct (Reasoning and Acting) to translate the user's instructions into the low-level motor APIs.
+  2. We will dictate the instructions by speaking (instead of typing). For this we will use OpenAI's speech-to-text GPT model.
+  3. We will have the system give us feedback through audio. Here we will use OpenAI's text-to-speech GPT model.
 
 ### Jupyter Notebook Example
 
