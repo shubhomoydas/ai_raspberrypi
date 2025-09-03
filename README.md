@@ -6,25 +6,13 @@ A little experiment with RaspberryPi and AI.
 
 ### Hardware
 
-#### RaspberryPi 5
-[CanaKit Raspberry Pi 5 Starter Kit PRO - Turbine Black (128GB Edition) (8GB RAM)](https://www.amazon.com/dp/B0CRSNCJ6Y)
-![Raspberry Pi 5](images/raspberry_pi_canakit.jpg)
+  - RaspberryPi 5
+  - Raspberry Pi Build HAT
+  - Lego Motor
+  - USB speaker for Raspberry Pi
+  - USB microphone for Raspberry Pi
 
-#### Raspberry Pi Build HAT
-[Raspberry Pi Build HAT](https://www.amazon.com/dp/B09JSJYH8T)
-![Raspberry Pi Build HAT](images/build_hat.jpg)
-
-#### Lego Motor
-[LEGO Technic Medium Angular Motor by LEGO Education (45603)](https://www.amazon.com/dp/B07QN7ZJZT)
-![Lego Motor](images/lego_motor.jpg)
-
-#### USB speaker for Raspberry Pi
-[USB Mini Speaker Computer Speaker Powered Stereo Multimedia Speaker for Notebook Laptop PC(Black)](https://www.amazon.com/dp/B075M7FHM1)
-![USB Mini Speaker](images/usb_speaker.jpg)
-
-#### USB microphone for Raspberry Pi
-[2 Pcs USB 2.0 Mini Microphone for Raspberry Pi 5 4 Model B, Module 3B+, Laptop/Desktop PC Plug and Play for Skype, MSN, Yahoo Recording, YouTube, Google Voice Search and Games]([https://www.amazon.com/dp/B075M7FHM1](https://www.amazon.com/dp/B0CYM618H7))
-![USB Mini Microphone](images/usb_microphone.jpg)
+More details are in Section [Hardware details](#hardware-details) below.
 
 ### Software / AI:
   - TigerVNC (connect to Raspberry Pi)
@@ -203,3 +191,24 @@ ssh-agent bash -c 'ssh-add ~/.ssh/id_rsa_github_personal; git pull origin'
 
 ssh-agent bash -c 'ssh-add ~/.ssh/id_rsa_github_personal; git push origin'
 ```
+
+## Hardware details
+### RaspberryPi 5
+[CanaKit Raspberry Pi 5 Starter Kit PRO - Turbine Black (128GB Edition) (8GB RAM)](https://www.amazon.com/dp/B0CRSNCJ6Y)
+![Raspberry Pi 5](images/raspberry_pi_canakit.jpg)
+
+### Raspberry Pi Build HAT
+[Raspberry Pi Build HAT](https://www.amazon.com/dp/B09JSJYH8T)
+![Raspberry Pi Build HAT](images/build_hat.jpg)
+
+### Lego Motor
+[LEGO Technic Medium Angular Motor by LEGO Education (45603)](https://www.amazon.com/dp/B07QN7ZJZT)
+![Lego Motor](images/lego_motor.jpg)
+
+### USB speaker for Raspberry Pi
+[USB Mini Speaker Computer Speaker Powered Stereo Multimedia Speaker for Notebook Laptop PC(Black)](https://www.amazon.com/dp/B075M7FHM1)
+![USB Mini Speaker](images/usb_speaker.jpg)
+
+### USB microphone for Raspberry Pi
+[2 Pcs USB 2.0 Mini Microphone for Raspberry Pi 5 4 Model B, Module 3B+, Laptop/Desktop PC Plug and Play for Skype, MSN, Yahoo Recording, YouTube, Google Voice Search and Games](https://www.amazon.com/dp/B0CYM618H7)
+![USB Mini Microphone](images/usb_microphone.jpg)
