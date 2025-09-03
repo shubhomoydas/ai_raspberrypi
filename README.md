@@ -8,23 +8,23 @@ A little experiment with RaspberryPi and AI.
 
 #### RaspberryPi 5
 [CanaKit Raspberry Pi 5 Starter Kit PRO - Turbine Black (128GB Edition) (8GB RAM)](https://www.amazon.com/dp/B0CRSNCJ6Y)
-![Raspberry Pi 5](figures/raspberry_pi_canakit.jpg)
+![Raspberry Pi 5](images/raspberry_pi_canakit.jpg)
 
 #### Raspberry Pi Build HAT
 [Raspberry Pi Build HAT](https://www.amazon.com/dp/B09JSJYH8T)
-![Raspberry Pi Build HAT](figures/build_hat.jpg)
+![Raspberry Pi Build HAT](images/build_hat.jpg)
 
 #### Lego Motor
 [LEGO Technic Medium Angular Motor by LEGO Education (45603)](https://www.amazon.com/dp/B07QN7ZJZT)
-![Lego Motor](figures/lego_motor.jpg)
+![Lego Motor](images/lego_motor.jpg)
 
 #### USB speaker for Raspberry Pi
 [USB Mini Speaker Computer Speaker Powered Stereo Multimedia Speaker for Notebook Laptop PC(Black)](https://www.amazon.com/dp/B075M7FHM1)
-![USB Mini Speaker](figures/usb_speaker.jpg)
+![USB Mini Speaker](images/usb_speaker.jpg)
 
 #### USB microphone for Raspberry Pi
 [2 Pcs USB 2.0 Mini Microphone for Raspberry Pi 5 4 Model B, Module 3B+, Laptop/Desktop PC Plug and Play for Skype, MSN, Yahoo Recording, YouTube, Google Voice Search and Games]([https://www.amazon.com/dp/B075M7FHM1](https://www.amazon.com/dp/B0CYM618H7))
-![USB Mini Microphone](figures/usb_microphone.jpg)
+![USB Mini Microphone](images/usb_microphone.jpg)
 
 ### Software / AI:
   - TigerVNC (connect to Raspberry Pi)
