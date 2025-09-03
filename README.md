@@ -107,7 +107,8 @@ cd ~/work/git/raspi
 
 source ~/work/venv/python311_raspi/bin/activate
 
-jupyter notebook --no-browser --port 8896
+export CLAUDE_API_KEY=<api_key> && export CLAUDE_API_URL=https://api.anthropic.com/v1/messages \
+  && export CLAUDE_API_VER=2023-06-01 && export OPENAI_API_KEY=<api_key>; jupyter notebook --no-browser --port 8896
 ```
 
 #### Important links for help on audio
@@ -162,8 +163,6 @@ mkdir ~/work/venv
 /Library/Frameworks/Python.framework/Versions/3.11/bin/python3 -m venv ~/work/venv/python311_raspi
 
 python3 -m venv ~/work/venv/python311_raspi
-
-source ~/work/venv/python311_raspi/bin/activate
 
 source ~/work/venv/python311_raspi/bin/activate
 ```
