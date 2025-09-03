@@ -2,16 +2,31 @@
 
 A little experiment with RaspberryPi and AI.
 
-### Hardware / Software
+## Hardware / Software
 
-Hardware used:
-  - RaspberryPi 5
-  - BuildHAT
-  - Lego Motor
-  - USB based speaker for Raspberry Pi
-  - USB based microphone for Raspberry Pi
+### Hardware
 
-Software / AI:
+#### RaspberryPi 5
+[CanaKit Raspberry Pi 5 Starter Kit PRO - Turbine Black (128GB Edition) (8GB RAM)](https://www.amazon.com/dp/B0CRSNCJ6Y)
+![Raspberry Pi 5](figures/raspberry_pi_canakit.jpg)
+
+#### Raspberry Pi Build HAT
+[Raspberry Pi Build HAT](https://www.amazon.com/dp/B09JSJYH8T)
+![Raspberry Pi Build HAT](figures/build_hat.jpg)
+
+#### Lego Motor
+[LEGO Technic Medium Angular Motor by LEGO Education (45603)](https://www.amazon.com/dp/B07QN7ZJZT)
+![Lego Motor](figures/lego_motor.jpg)
+
+#### USB speaker for Raspberry Pi
+[USB Mini Speaker Computer Speaker Powered Stereo Multimedia Speaker for Notebook Laptop PC(Black)](https://www.amazon.com/dp/B075M7FHM1)
+![USB Mini Speaker](figures/usb_speaker.jpg)
+
+#### USB microphone for Raspberry Pi
+[2 Pcs USB 2.0 Mini Microphone for Raspberry Pi 5 4 Model B, Module 3B+, Laptop/Desktop PC Plug and Play for Skype, MSN, Yahoo Recording, YouTube, Google Voice Search and Games]([https://www.amazon.com/dp/B075M7FHM1](https://www.amazon.com/dp/B0CYM618H7))
+![USB Mini Microphone](figures/usb_microphone.jpg)
+
+### Software / AI:
   - TigerVNC (connect to Raspberry Pi)
   - Python 3.11
   - Claude (might use OpenAI GPT-4*) is being used for LLM completion -- an API key will be required
@@ -25,7 +40,7 @@ export CLAUDE_API_KEY=<api_key> && export CLAUDE_API_URL=https://api.anthropic.c
   && export CLAUDE_API_VER=2023-06-01 && export OPENAI_API_KEY=<api_key>; python
 ```
 
-### Python
+## Python
 
 #### Check if LEGO motor setup is OK
 
@@ -153,7 +168,7 @@ source ~/work/venv/python311_raspi/bin/activate
 source ~/work/venv/python311_raspi/bin/activate
 ```
 
-### Raspberry Pi setup
+## Raspberry Pi setup
 
 #### Connecting to Raspberry Pi with a GUI
 
@@ -172,7 +187,7 @@ From the menu, use **Interface Options** to enable VNC
 sudo shutdown -h now
 ```
 
-### Git
+## Git
 
 The below might fail in case we have default ssh key configured for another bitbucket repository.
 ```
