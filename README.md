@@ -2,6 +2,56 @@
 
 A little experiment with RaspberryPi and AI.
 
+### Objective
+We will control a LEGO motor using voice commands.
+
+### Setup and Approach
+The Raspberry Pi [Build HAT](https://buildhat.readthedocs.io/en/latest/buildhat/index.html) helps us connect to the [LEGO Motor](https://buildhat.readthedocs.io/en/latest/buildhat/motor.html). The python APIs let us programmatically control the motor. These APIs are rather cryptic, such as `run_for_degrees()`, `run_for_rotations()`, `run_to_position()`, etc. Instead, instructions such as `Please turn left and then turn right twice.` are more human-friendly. We will use an LLM (Claude Sonnet) and ReAct (Reasoning and Acting) to translate the user's instructions into the low-level motor APIs.
+
+### Jupyter Notebook Example
+
+To run the notebook(s) in this repo, make sure you have installed the required libraries, and acquired the Claude and OpenAI API keys. Start jupyter with the below command:
+```
+cd ai_raspberrypi_notebooks
+
+export CLAUDE_API_KEY=<api_key> && export CLAUDE_API_URL=https://api.anthropic.com/v1/messages \
+  && export CLAUDE_API_VER=2023-06-01 && export OPENAI_API_KEY=<api_key>; jupyter notebook
+```
+
+Check out the notebook [test_control.ipynb](https://github.com/shubhomoydas/ai_raspberrypi/blob/main/ai_raspberrypi_notebooks/test_control.ipynb). Here, we have shown how `Please turn left and then turn right twice.` gets translated into three motor instructions by ReAct:
+```
+{'blocking': True, 'degrees': 90, 'name': 'run_for_degrees', 'speed': -50}
+{'blocking': True, 'degrees': 90, 'name': 'run_for_degrees', 'speed': 50}
+{'blocking': True, 'degrees': 90, 'name': 'run_for_degrees', 'speed': 50}
+```
+
+ReAct also shows its reasoning for each action:
+```
+[{'Action': {'blocking': True,
+             'degrees': 90,
+             'name': 'run_for_degrees',
+             'speed': -50},
+  'Thought': 'I need to break this down into three steps: 1) turn left (90 '
+             'degrees), 2) turn right (90 degrees), and 3) turn right again '
+             "(90 degrees). Since turning involves rotation, I'll use "
+             "run_for_degrees. For left turn, I'll use negative speed, and for "
+             'right turns, positive speed.'},
+ {'Action': {'blocking': True,
+             'degrees': 90,
+             'name': 'run_for_degrees',
+             'speed': 50},
+  'Thought': 'Good, the left turn is complete. Now I need to execute the first '
+             'right turn.'},
+ {'Action': {'blocking': True,
+             'degrees': 90,
+             'name': 'run_for_degrees',
+             'speed': 50},
+  'Thought': 'The first right turn is complete. Now I need to execute the '
+             'second right turn.'}]
+```
+
+The ReAct prompt for the LLM can be seen in [motor_control.py](https://github.com/shubhomoydas/ai_raspberrypi/blob/main/ai_raspberrypi_notebooks/experiments/motor_control.py).
+
 ## Hardware / Software
 
 ### Hardware
