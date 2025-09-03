@@ -1,6 +1,6 @@
 # README #
 
-A little experiment with RaspberryPi and AI.
+A little experiment with Raspberry Pi and AI.
 
 ### Objective
 We will control a LEGO motor using voice commands.
