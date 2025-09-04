@@ -177,7 +177,7 @@ while i < 10:
 
 #### Start jupyter notebook
 ```
-cd ~/work/git/raspi
+cd ~/work/git/ai_raspberrypi
 
 source ~/work/venv/python311_raspi/bin/activate
 
