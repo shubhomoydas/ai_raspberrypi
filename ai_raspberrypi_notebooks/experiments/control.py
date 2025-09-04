@@ -1,3 +1,7 @@
+# To run on Raspberry Pi 5:
+#   cd ai_raspberrypi_notebooks
+#   python -m experiments.control
+
 import os
 import json
 from pprint import pprint, pformat

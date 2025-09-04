@@ -7,6 +7,23 @@ See below the [hardware / equipment setup](#hardware-details). All of these were
 ### Objective
 We will control a LEGO motor using voice commands.
 
+### Running demo code
+
+**IMPORTANT**: First make sure Raspberry Pi environment is setup properly. Follow the steps below:
+  1. Setup the hardware
+  2. [Connect to Raspberry Pi remotely](#connecting-to-raspberry-pi-with-a-gui)
+  3. [Clone this repo](#git)
+  4. [Instructions on installing Python and setting up virtual environment ](#setting-up-the-python-virtual-env)
+  5. [Install python BuildHAT library and other packages to process audio files](#install-required-python-libraries)
+  6. [Install libraries to output audio](#setup-for-enabling-audio-output-on-raspberry-pi)
+
+Now, execute the demo code [control.py](https://github.com/shubhomoydas/ai_raspberrypi/blob/main/ai_raspberrypi_notebooks/experiments/control.py):
+```
+cd ai_raspberrypi_notebooks
+
+python -m experiments.control
+```
+
 ### Setup and Approach
 The Raspberry Pi [Build HAT](https://buildhat.readthedocs.io/en/latest/buildhat/index.html) helps us connect to the [LEGO Motor](https://buildhat.readthedocs.io/en/latest/buildhat/motor.html). The python APIs let us programmatically control the motor. These APIs are rather cryptic, such as `run_for_degrees()`, `run_for_rotations()`, `run_to_position()`, etc. Instead, instructions such as `Please turn left and then turn right twice.` are more human-friendly. For this, we will implement our system as follows:
   1. We will use an LLM (Claude) and ReAct (Reasoning and Acting) to translate the user's instructions into the low-level motor APIs.
@@ -194,15 +211,15 @@ export CLAUDE_API_KEY=<api_key> && export CLAUDE_API_URL=https://api.anthropic.c
 
 
 #### Install required python libraries
-**IMPORTANT**: These must be run on Raspberry Pi
+**IMPORTANT**: These must be run ON THE Raspberry Pi
 ```
-# sudo apt-get install libportaudio2
+sudo apt-get install libportaudio2
 
-# pip3 install buildhat
+pip3 install buildhat
 
-# pip install sounddevice wavio scipy openai
+pip install sounddevice wavio scipy openai
 
-# pip install jupyter
+pip install jupyter
 ```
 
 #### Setup for installing portaudio on Macbook, i.e., OSX (required by pyaudio)
