@@ -1,6 +1,8 @@
 # README #
 
-A little experiment with Raspberry Pi and AI.
+A little project with Raspberry Pi, LEGO motor, AI (LLMs), and voice commands. If you are a school student, feel free to borrow the ideas (and code) in this repo for robotics projects.
+
+See below the [hardware / equipment setup](#hardware-details). All of these were bought online.
 
 ### Objective
 We will control a LEGO motor using voice commands.
@@ -96,7 +98,7 @@ Please note that the hardware listed here are **NOT recommendations**. These are
   - USB microphone for Raspberry Pi
   - Build HAT Power Adapter -- This is required for running the LEGO motor.
 
-More details are in Section [Hardware details](#hardware-details) below.
+More details are in Section [Hardware details](#hardware-details) below. Connecting the devices is very easy. At max a screw-driver is needed, and most were just plugged in to appropriate ports.
 
 ### Software / AI:
   - TigerVNC (connect to Raspberry Pi)
