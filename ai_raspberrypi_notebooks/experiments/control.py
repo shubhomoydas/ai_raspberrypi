@@ -5,13 +5,26 @@ from experiments.audio_control import *
 from experiments.motor_control import *
 
 
-dummy_motor, dummy_funcs = get_motor_funcs(dummy=True)
-real_motor, real_funcs = get_motor_funcs(dummy=False)
+def control(real_funcs, dummy_funcs):
+    """ Runs an audio input loop
 
-print(f"Motor connected: {real_motor.connected}")
-
-
-def control():
+    Args:
+        :param real_funcs: dict
+            References to motor functions to actually perform the physical actions
+        :param dummy_funcs: dict
+            References to dummy motor functions that will be used to only generate execution plans
+    
+    Loops over the following steps:
+        1. Prints 'Press [return] to speak, or 'q' to exit: ' and waits for user input
+        2. If user inputs `q` in step 1, then program quits
+        3. If user presses `[return]` key in setp 1, then program starts recording 4 secs audio
+        4. Recorded audio is transcribed to text and the text is set as the task
+        5. The transcribed text is converted back to audio and output through speaker; user is asked to confirm the task
+        6. If user confirms, a plan is generated for the task (transcribed text)
+        7. The plan is executed
+        8. Final result of the task is announced through audio speaker
+        9. Go to Step 1
+    """
     answer = None
     for i in range(5):
         inp = input("Press [return] to speak, or 'q' to exit: ")
@@ -48,6 +61,11 @@ def control():
 
 
 if __name__ == '__main__':
-    control()
+    dummy_motor, dummy_funcs = get_motor_funcs(dummy=True)
+    real_motor, real_funcs = get_motor_funcs(dummy=False)
+    
+    print(f"Motor connected: {real_motor.connected}")
+    
+    control(real_funcs, dummy_funcs)
     print("Turning off the motor...")
     real_motor.off()

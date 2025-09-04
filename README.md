@@ -11,6 +11,34 @@ The Raspberry Pi [Build HAT](https://buildhat.readthedocs.io/en/latest/buildhat/
   2. We will dictate the instructions by speaking (instead of typing). For this we will use OpenAI's speech-to-text GPT model.
   3. We will have the system give us feedback through audio. Here we will use OpenAI's text-to-speech GPT model.
 
+### Design Considerations
+
+Check the file [control.py](https://github.com/shubhomoydas/ai_raspberrypi/blob/main/ai_raspberrypi_notebooks/experiments/control.py). The main highlights are shown below:
+```
+def control(real_funcs, dummy_funcs):
+    ...
+    ...
+        thought_actions, answer, messages = get_action_steps(task, funcs=dummy_funcs)
+        for thought_action in thought_actions:
+            thought = thought_action.get("Thought")
+            step = thought_action.get("Action")
+                ...
+                obs = invoke_tool(step, real_funcs)
+                ...
+            ...
+    ...
+```
+
+#### Separation of planning and execution
+It is always good to separate planning from execution. Planning is where AI comes in. The main sequence of steps are identified during planning. Execution of the planned steps is much more mechanical, but needs to handle security, performance, errors, etc. I have found that mixing both concerns (planning and execution) leads to buggy implementations. As an added benefit, the separation of concerns also helps distribute the work across teams with specialized skill sets.
+
+In the code snippet above:
+  1. **Planning**: `get_action_steps(task, funcs=dummy_funcs)` performs planning. `dummy_funcs` provides 'mock' implementations of the motor functions.
+  2. **Execution**: `invoke_tool(step, real_funcs)` executes the motor APIs on the real motor. `real_funcs` provides reference to actual motor functionality.
+
+#### Sandboxing during planning
+LLMs are still not mature enough to operate fully independently. Especially when they are used to control devices in real world. My preference is to use a sandbox/simulation environment when letting the LLM plan the steps required to complete a task. Once we are satisfied that the planning is robust and ironed out, we execute the planned steps on real devices. As already mentioned, the sandboxing is achieved though the `dummy_funcs` 'mock' functions.
+
 ### Jupyter Notebook Example
 
 To run the notebook(s) in this repo, make sure you have installed the required libraries, and acquired the Claude and OpenAI API keys. Start jupyter with the below command:
@@ -57,6 +85,8 @@ The ReAct prompt for the LLM can be seen in [motor_control.py](https://github.co
 
 ## Hardware / Software
 
+Please note that the hardware listed here are **NOT recommendations**. These are merely items I found easy to purchase.
+
 ### Hardware
 
   - RaspberryPi 5
@@ -64,6 +94,7 @@ The ReAct prompt for the LLM can be seen in [motor_control.py](https://github.co
   - Lego Motor
   - USB speaker for Raspberry Pi
   - USB microphone for Raspberry Pi
+  - Build HAT Power Adapter -- This is required for running the LEGO motor.
 
 More details are in Section [Hardware details](#hardware-details) below.
 
@@ -265,3 +296,10 @@ ssh-agent bash -c 'ssh-add ~/.ssh/id_rsa_github_personal; git push origin'
 ### USB microphone for Raspberry Pi
 [2 Pcs USB 2.0 Mini Microphone for Raspberry Pi 5 4 Model B, Module 3B+, Laptop/Desktop PC Plug and Play for Skype, MSN, Yahoo Recording, YouTube, Google Voice Search and Games](https://www.amazon.com/dp/B0CYM618H7)
 ![USB Mini Microphone](images/usb_microphone.jpg)
+
+### Build HAT Power Adapter
+
+Make sure the voltage regulator is set correctly. I could not find too many affordable options online. The one listed here is one of the closest to my requirement, but there will likely be better alternatives. We will need ~8V for the Build HAT.
+
+[SHNITPWR Power Supply Adjustable DC 12V 11V 10V 8V 9V 6V 5V 3.5V Universal AC Adapter Multi-Voltage AC/DC Adapter 3.5V~12V 12A 144W DC Power Adapter 100V~240V AC to DC Variable Power Converter 14 Tips](https://www.amazon.com/dp/B0CKXW6ZCJ)
+![Build HAT Power Adapter](images/buildhat_power_adapter.jpg)
